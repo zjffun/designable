@@ -33,6 +33,7 @@ import {
   BoxShadowStyleSetter,
   FontStyleSetter,
   DisplayStyleSetter,
+  GridDisplayStyleSetter,
   FlexStyleSetter,
 } from './components'
 
@@ -53,6 +54,7 @@ export const SchemaField = createSchemaField({
     BorderStyleSetter,
     BorderRadiusStyleSetter,
     DisplayStyleSetter,
+    GridDisplayStyleSetter,
     BoxShadowStyleSetter,
     FlexStyleSetter,
     FontStyleSetter,

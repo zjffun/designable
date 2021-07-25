@@ -34,6 +34,65 @@ GlobalRegistry.registerDesignerProps({
   Root: {
     title: 'components.Root',
   },
+  TestComponent: (node) => ({
+    title: `components.${node.props['x-component']}`,
+    draggable: true,
+    inlineLayout: true,
+    propsSchema: {
+      type: 'object',
+      properties: {
+        title: {
+          type: 'string',
+          'x-decorator': 'FormItem',
+          'x-component': 'Input',
+        },
+
+        hidden: {
+          type: 'string',
+          'x-decorator': 'FormItem',
+          'x-component': 'Switch',
+        },
+        default: {
+          'x-decorator': 'FormItem',
+          'x-component': 'ValueInput',
+        },
+        'style.width': {
+          type: 'string',
+          'x-decorator': 'FormItem',
+          'x-component': 'SizeInput',
+        },
+        'style.height': {
+          type: 'string',
+          'x-decorator': 'FormItem',
+          'x-component': 'SizeInput',
+        },
+        'style.display': {
+          'x-component': 'DisplayStyleSetter',
+        },
+        'style.background': {
+          'x-component': 'BackgroundStyleSetter',
+        },
+        'style.boxShadow': {
+          'x-component': 'BoxShadowStyleSetter',
+        },
+        'style.font': {
+          'x-component': 'FontStyleSetter',
+        },
+        'style.margin': {
+          'x-component': 'BoxStyleSetter',
+        },
+        'style.padding': {
+          'x-component': 'BoxStyleSetter',
+        },
+        'style.borderRadius': {
+          'x-component': 'BorderRadiusStyleSetter',
+        },
+        'style.border': {
+          'x-component': 'BorderStyleSetter',
+        },
+      },
+    },
+  }),
   Field: (node) => ({
     title: `components.${node.props['x-component']}`,
     draggable: true,
@@ -96,13 +155,40 @@ GlobalRegistry.registerDesignerProps({
   Card: {
     title: 'components.Card',
     droppable: true,
-    inlineChildrenLayout: true,
+    // inlineChildrenLayout: true,
+    propsSchema: {
+      type: 'object',
+      properties: {
+        'style.gridTemplateAreas': {
+          type: 'string',
+          'x-decorator': 'FormItem',
+          'x-component': 'Input',
+        },
+        'style.gridGap': {
+          type: 'string',
+          'x-decorator': 'FormItem',
+          'x-component': 'Input',
+        },
+        'style.gridArea': {
+          type: 'string',
+          'x-decorator': 'FormItem',
+          'x-component': 'Input',
+        },
+      },
+    },
     // allowAppend: (target, sources) =>
     //   sources.every((node) => node.componentName === 'Field'),
   },
 })
 
 GlobalDragSource.setSourcesByGroup('form', [
+  {
+    componentName: 'TestComponent',
+    props: {
+      title: 'TestComponent',
+      'x-component': 'TestComponent',
+    },
+  },
   {
     componentName: 'Field',
     props: {
@@ -163,6 +249,7 @@ GlobalRegistry.registerDesignerLocales({
       Root: 'Form',
       Input: 'Input',
       Card: 'Card',
+      TestComponent: 'TestComponent',
     },
     settings: {
       title: 'Title',
